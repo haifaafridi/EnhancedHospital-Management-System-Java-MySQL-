@@ -12,24 +12,21 @@ This project is designed for real-time hospital data handling with a secure MySQ
 
 
 ![Login Screenshot](src/com/hospital/images/login.png)
-![Dashboard Screenshot](images/Dashboard.png)
-![Patient Screenshot](images/Patient_management.png)
-![Appointment Screenshot](images/Appointment_management.png)
-![Billing Screenshot](images/Billing_management.png)
-![Report Screenshot](images/Report.png)
 
 
-![Dashboard Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Dashboard.png")
+![Dashboard Screenshot](src/com/hospital/images/Dashboard.png)
 
-![Patient Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Patient_management.png")
 
-![Appointment Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Appointment_management.png")
+![Patient Screenshot](src/com/hospital/images/Patient_management.png)
 
-![Billing Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Billing_management.png")
 
-![Report Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Report.png")
+![Appointment Screenshot](src/com/hospital/images/Appointment_management.png)
 
-![Login Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Dashboard.png")
+
+![Billing Screenshot](src/com/hospital/images/Billing_management.png)
+
+
+![Report Screenshot](src/com/hospital/images/Report.png)
 
 ## ⚙️ Features
 
@@ -123,8 +120,8 @@ If you’re using an IDE like IntelliJ IDEA, NetBeans, or Eclipse:
 
 ## 📦 Project Structure
 
-![Project Structure]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\project structure.png")
----
+![Project structure](src/com/hospital/images/project_structure.png)
+
 
 ## ⚙️ Installation & Setup
 
@@ -205,6 +202,7 @@ Haifa Afridi
 📜 License
 
 This project is open-source and available under the MIT License.
+
 
 
 
