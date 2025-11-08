@@ -103,56 +103,58 @@ If you’re using an IDE like IntelliJ IDEA, NetBeans, or Eclipse:
 
 hospital-management-system/
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── hospital/
-│       │           ├── main/
-│       │           │   └── HospitalManagementSystem.java
-│       │           ├── model/
-│       │           │   ├── User.java
-│       │           │   ├── Patient.java
-│       │           │   ├── Doctor.java
-│       │           │   ├── Appointment.java
-│       │           │   ├── Bill.java
-│       │           │   ├── Admission.java
-│       │           │   └── Room.java
-│       │           ├── dao/
-│       │           │   ├── UserDAO.java
-│       │           │   ├── PatientDAO.java
-│       │           │   ├── DoctorDAO.java
-│       │           │   ├── AppointmentDAO.java
-│       │           │   ├── BillDAO.java
-│       │           │   ├── AdmissionDAO.java
-│       │           │   ├── RoomDAO.java
-│       │           │   └── AuditLogDAO.java
-│       │           ├── ui/
-│       │           │   ├── LoginFrame.java
-│       │           │   ├── MainDashboard.java
-│       │           │   ├── DashboardHomePanel.java
-│       │           │   ├── patient/
-│       │           │   │   ├── PatientManagementPanel.java
-│       │           │   │   ├── RegisterPatientDialog.java
-│       │           │   │   └── PatientDetailsDialog.java
-│       │           │   ├── appointment/
-│       │           │   │   ├── AppointmentPanel.java
-│       │           │   │   └── NewAppointmentDialog.java
-│       │           │   ├── billing/
-│       │           │   │   ├── BillingPanel.java
-│       │           │   │   ├── GenerateBillDialog.java
-│       │           │   │   └── RecordPaymentDialog.java
-│       │           │   └── report/
-│       │           │       └── ReportPanel.java
-│       │           └── util/
-│       │               ├── DatabaseConnection.java
-│       │               ├── PasswordUtil.java
-│       │               └── SessionManager.java
-│       └── resources/
-│           └── application.properties
+│ └── main/
+│ ├── java/
+│ │ └── com/
+│ │ └── hospital/
+│ │ ├── main/
+│ │ │ └── HospitalManagementSystem.java
+│ │ ├── model/
+│ │ │ ├── User.java
+│ │ │ ├── Patient.java
+│ │ │ ├── Doctor.java
+│ │ │ ├── Appointment.java
+│ │ │ ├── Bill.java
+│ │ │ ├── Admission.java
+│ │ │ └── Room.java
+│ │ ├── dao/
+│ │ │ ├── UserDAO.java
+│ │ │ ├── PatientDAO.java
+│ │ │ ├── DoctorDAO.java
+│ │ │ ├── AppointmentDAO.java
+│ │ │ ├── BillDAO.java
+│ │ │ ├── AdmissionDAO.java
+│ │ │ ├── RoomDAO.java
+│ │ │ └── AuditLogDAO.java
+│ │ ├── ui/
+│ │ │ ├── LoginFrame.java
+│ │ │ ├── MainDashboard.java
+│ │ │ ├── DashboardHomePanel.java
+│ │ │ ├── patient/
+│ │ │ │ ├── PatientManagementPanel.java
+│ │ │ │ ├── RegisterPatientDialog.java
+│ │ │ │ └── PatientDetailsDialog.java
+│ │ │ ├── appointment/
+│ │ │ │ ├── AppointmentPanel.java
+│ │ │ │ └── NewAppointmentDialog.java
+│ │ │ ├── billing/
+│ │ │ │ ├── BillingPanel.java
+│ │ │ │ ├── GenerateBillDialog.java
+│ │ │ │ └── RecordPaymentDialog.java
+│ │ │ └── report/
+│ │ │ └── ReportPanel.java
+│ │ └── util/
+│ │ ├── DatabaseConnection.java
+│ │ ├── PasswordUtil.java
+│ │ └── SessionManager.java
+│ └── resources/
+│ └── application.properties
+├── lib/
+│ ├── jbcrypt-0.4.jar
+│ └── mysql-connector-j-9.5.0.jar
 ├── pom.xml
 ├── README.md
 └── database_schema.sql
-
 
 ---
 
@@ -237,16 +239,3 @@ Haifa Afridi
 This project is open-source and available under the MIT License.
 
 
----
-
-4. **Save and close Notepad**
-
-5. **Add and commit the README**
-```bash
-git add README.md
-git commit -m "Added professional README file"
-
-
-Push to GitHub
-
-git push origin main
