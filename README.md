@@ -120,7 +120,7 @@ If you’re using an IDE like IntelliJ IDEA, NetBeans, or Eclipse:
 
 ## 📦 Project Structure
 
-![Project structure](src/com/hospital/images/projectstructure.png)
+![Project structure](src/com/hospital/images/project%20structure.png)
 
 
 ## ⚙️ Installation & Setup
@@ -202,6 +202,7 @@ Haifa Afridi
 📜 License
 
 This project is open-source and available under the MIT License.
+
 
 
 
