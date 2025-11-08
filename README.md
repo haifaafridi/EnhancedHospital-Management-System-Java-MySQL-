@@ -11,7 +11,7 @@ This project is designed for real-time hospital data handling with a secure MySQ
 
 
 
-![Login Screenshot](images/login.png)
+![Login Screenshot](src/com/hospital/images/login.png)
 ![Dashboard Screenshot](images/Dashboard.png)
 ![Patient Screenshot](images/Patient_management.png)
 ![Appointment Screenshot](images/Appointment_management.png)
