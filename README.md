@@ -9,7 +9,15 @@ This project is designed for real-time hospital data handling with a secure MySQ
 
 ## Project Images:
 
-![Login Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\login.png")
+
+
+![Login Screenshot](images/login.png)
+![Dashboard Screenshot](images/Dashboard.png)
+![Patient Screenshot](images/Patient_management.png)
+![Appointment Screenshot](images/Appointment_management.png)
+![Billing Screenshot](images/Billing_management.png)
+![Report Screenshot](images/Report.png)
+
 
 ![Dashboard Screenshot]("C:\Users\Haifa Afridi\HospitalManagementSystem\src\com\hospital\images\Dashboard.png")
 
@@ -197,5 +205,6 @@ Haifa Afridi
 📜 License
 
 This project is open-source and available under the MIT License.
+
 
 
