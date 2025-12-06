@@ -1,6 +1,3 @@
-
-
-
 package com.hospital.ui.appointment;
 
 import javax.swing.*;
@@ -49,7 +46,7 @@ public class NewAppointmentDialog extends JDialog {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
         mainPanel.setBackground(Color.WHITE);
 
-        
+        // Title
         JLabel titleLabel = new JLabel("Schedule New Appointment");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         titleLabel.setForeground(new Color(52, 73, 94));
@@ -64,17 +61,17 @@ public class NewAppointmentDialog extends JDialog {
         mainPanel.add(subtitleLabel);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 25)));
 
-        
+        // Patient ComboBox
         patientCombo = new JComboBox<>();
         patientCombo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         patientCombo.setMaximumRowCount(10);
 
-        
+        // Doctor ComboBox
         doctorCombo = new JComboBox<>();
         doctorCombo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         doctorCombo.setMaximumRowCount(10);
 
-        
+        // Date Spinner
         Calendar calendar = Calendar.getInstance();
         SpinnerDateModel dateModel = new SpinnerDateModel(calendar.getTime(), null, null, Calendar.DAY_OF_MONTH);
         dateSpinner = new JSpinner(dateModel);
@@ -82,7 +79,7 @@ public class NewAppointmentDialog extends JDialog {
         dateSpinner.setEditor(dateEditor);
         dateSpinner.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-        
+        // Time Spinner
         calendar.set(Calendar.HOUR_OF_DAY, 9);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -92,11 +89,11 @@ public class NewAppointmentDialog extends JDialog {
         timeSpinner.setEditor(timeEditor);
         timeSpinner.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-        
+        // Type ComboBox
         typeCombo = new JComboBox<>(new String[] { "Consultation", "Follow-up", "Emergency", "Check-up" });
         typeCombo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-        
+        // Reason TextArea
         reasonArea = new JTextArea(4, 20);
         reasonArea.setLineWrap(true);
         reasonArea.setWrapStyleWord(true);
@@ -105,18 +102,18 @@ public class NewAppointmentDialog extends JDialog {
                 BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
-        
+        // Check Availability Button
         checkAvailabilityButton = createStyledButton("Check Availability", new Color(52, 152, 219));
         checkAvailabilityButton.addActionListener(e -> checkAvailability());
 
-        
+        // Add all fields
         addFormField(mainPanel, "Patient:", patientCombo);
         addFormField(mainPanel, "Doctor:", doctorCombo);
         addFormField(mainPanel, "Date:", dateSpinner);
         addFormField(mainPanel, "Time:", timeSpinner);
         addFormField(mainPanel, "Type:", typeCombo);
 
-        
+        // Availability check button panel
         JPanel availPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         availPanel.setBackground(Color.WHITE);
         availPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -127,7 +124,7 @@ public class NewAppointmentDialog extends JDialog {
 
         addFormField(mainPanel, "Reason:", new JScrollPane(reasonArea));
 
-        
+        // Button Panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
         buttonPanel.setBackground(Color.WHITE);
         buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -145,7 +142,7 @@ public class NewAppointmentDialog extends JDialog {
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(buttonPanel);
 
-        
+        // Add scroll pane
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -272,7 +269,7 @@ public class NewAppointmentDialog extends JDialog {
 
     private void scheduleAppointment() {
         try {
-            
+            // Validate selections
             PatientItem selectedPatient = (PatientItem) patientCombo.getSelectedItem();
             DoctorItem selectedDoctor = (DoctorItem) doctorCombo.getSelectedItem();
 
@@ -292,20 +289,26 @@ public class NewAppointmentDialog extends JDialog {
                 return;
             }
 
-            
+            // Get date and time values
             java.util.Date appointmentDate = (java.util.Date) dateSpinner.getValue();
             java.util.Date appointmentTime = (java.util.Date) timeSpinner.getValue();
 
-            
+            // Convert to SQL types
             Date sqlDate = new Date(appointmentDate.getTime());
             Time sqlTime = new Time(appointmentTime.getTime());
 
-            
+            // Validate date/time is not in the past
             Calendar now = Calendar.getInstance();
             Calendar appointmentCal = Calendar.getInstance();
             appointmentCal.setTime(appointmentDate);
-            appointmentCal.set(Calendar.HOUR_OF_DAY, appointmentTime.getHours());
-            appointmentCal.set(Calendar.MINUTE, appointmentTime.getMinutes());
+
+            // Use Calendar methods for time extraction
+            Calendar timeCal = Calendar.getInstance();
+            timeCal.setTime(appointmentTime);
+            appointmentCal.set(Calendar.HOUR_OF_DAY, timeCal.get(Calendar.HOUR_OF_DAY));
+            appointmentCal.set(Calendar.MINUTE, timeCal.get(Calendar.MINUTE));
+            appointmentCal.set(Calendar.SECOND, 0);
+            appointmentCal.set(Calendar.MILLISECOND, 0);
 
             if (appointmentCal.before(now)) {
                 JOptionPane.showMessageDialog(this,
@@ -315,7 +318,7 @@ public class NewAppointmentDialog extends JDialog {
                 return;
             }
 
-            
+            // Check availability
             boolean available = appointmentDAO.isSlotAvailable(
                     selectedDoctor.doctor.getDoctorId(),
                     sqlDate,
@@ -331,7 +334,7 @@ public class NewAppointmentDialog extends JDialog {
                 }
             }
 
-            
+            // Create appointment object
             Appointment appointment = new Appointment();
             appointment.setPatientId(selectedPatient.patient.getPatientId());
             appointment.setDoctorId(selectedDoctor.doctor.getDoctorId());
@@ -341,7 +344,7 @@ public class NewAppointmentDialog extends JDialog {
             appointment.setStatus("Scheduled");
             appointment.setReason(reasonArea.getText().trim());
 
-            
+            // Debug output
             System.out.println("Creating appointment:");
             System.out.println("  Patient ID: " + appointment.getPatientId());
             System.out.println("  Doctor ID: " + appointment.getDoctorId());
@@ -350,7 +353,7 @@ public class NewAppointmentDialog extends JDialog {
             System.out.println("  Type: " + appointment.getAppointmentType());
             System.out.println("  Reason: " + appointment.getReason());
 
-            
+            // Save to database
             if (appointmentDAO.createAppointment(appointment)) {
                 success = true;
                 JOptionPane.showMessageDialog(this,
@@ -379,7 +382,7 @@ public class NewAppointmentDialog extends JDialog {
         return success;
     }
 
-    
+    // Inner classes for ComboBox items
     private static class PatientItem {
         Patient patient;
 
@@ -408,4 +411,3 @@ public class NewAppointmentDialog extends JDialog {
         }
     }
 }
-
