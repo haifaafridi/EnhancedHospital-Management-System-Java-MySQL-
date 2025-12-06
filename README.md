@@ -7,7 +7,26 @@ It provides an integrated solution for managing patients, doctors, appointments,
 
 This project is designed for real-time hospital data handling with a secure MySQL backend, professional GUI dashboards, and modular Java code architecture.
 
----
+## Project Images:
+
+
+
+![Login Screenshot](src/com/hospital/images/login.png)
+
+
+![Dashboard Screenshot](src/com/hospital/images/Dashboard.png)
+
+
+![Patient Screenshot](src/com/hospital/images/Patient_management.png)
+
+
+![Appointment Screenshot](src/com/hospital/images/Appointment_management.png)
+
+
+![Billing Screenshot](src/com/hospital/images/Billing_management.png)
+
+
+![Report Screenshot](src/com/hospital/images/Report.png)
 
 ## ⚙️ Features
 
@@ -101,62 +120,8 @@ If you’re using an IDE like IntelliJ IDEA, NetBeans, or Eclipse:
 
 ## 📦 Project Structure
 
-hospital-management-system/
-├── src/
-│ └── main/
-│ ├── java/
-│ │ └── com/
-│ │ └── hospital/
-│ │ ├── main/
-│ │ │ └── HospitalManagementSystem.java
-│ │ ├── model/
-│ │ │ ├── User.java
-│ │ │ ├── Patient.java
-│ │ │ ├── Doctor.java
-│ │ │ ├── Appointment.java
-│ │ │ ├── Bill.java
-│ │ │ ├── Admission.java
-│ │ │ └── Room.java
-│ │ ├── dao/
-│ │ │ ├── UserDAO.java
-│ │ │ ├── PatientDAO.java
-│ │ │ ├── DoctorDAO.java
-│ │ │ ├── AppointmentDAO.java
-│ │ │ ├── BillDAO.java
-│ │ │ ├── AdmissionDAO.java
-│ │ │ ├── RoomDAO.java
-│ │ │ └── AuditLogDAO.java
-│ │ ├── ui/
-│ │ │ ├── LoginFrame.java
-│ │ │ ├── MainDashboard.java
-│ │ │ ├── DashboardHomePanel.java
-│ │ │ ├── patient/
-│ │ │ │ ├── PatientManagementPanel.java
-│ │ │ │ ├── RegisterPatientDialog.java
-│ │ │ │ └── PatientDetailsDialog.java
-│ │ │ ├── appointment/
-│ │ │ │ ├── AppointmentPanel.java
-│ │ │ │ └── NewAppointmentDialog.java
-│ │ │ ├── billing/
-│ │ │ │ ├── BillingPanel.java
-│ │ │ │ ├── GenerateBillDialog.java
-│ │ │ │ └── RecordPaymentDialog.java
-│ │ │ └── report/
-│ │ │ └── ReportPanel.java
-│ │ └── util/
-│ │ ├── DatabaseConnection.java
-│ │ ├── PasswordUtil.java
-│ │ └── SessionManager.java
-│ └── resources/
-│ └── application.properties
-├── lib/
-│ ├── jbcrypt-0.4.jar
-│ └── mysql-connector-j-9.5.0.jar
-├── pom.xml
-├── README.md
-└── database_schema.sql
+![Project structure](src/com/hospital/images/project%20structure.png)
 
----
 
 ## ⚙️ Installation & Setup
 
@@ -237,5 +202,9 @@ Haifa Afridi
 📜 License
 
 This project is open-source and available under the MIT License.
+
+
+
+
 
 
