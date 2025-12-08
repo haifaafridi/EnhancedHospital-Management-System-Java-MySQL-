@@ -1,16 +1,16 @@
 
-
-
 package com.hospital.ui;
 
+import com.hospital.ui.ambulance.AmbulancePanel;
 import javax.swing.*;
-
+import com.hospital.ui.room.*;
 import com.hospital.dao.AuditLogDAO;
 import com.hospital.ui.appointment.*;
 import com.hospital.ui.billing.*;
 import com.hospital.ui.patient.*;
 import com.hospital.ui.report.*;
 import com.hospital.util.SessionManager;
+import com.hospital.ui.medicalhistory.MedicalHistoryPanel;
 
 import java.awt.*;
 
@@ -31,13 +31,11 @@ public class MainDashboard extends JFrame {
         setMinimumSize(new Dimension(1200, 700));
         setLayout(new BorderLayout());
 
-        
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(new Color(52, 152, 219)); 
+        topPanel.setBackground(new Color(52, 152, 219));
         topPanel.setPreferredSize(new Dimension(0, 60));
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        
         ImageIcon hospitalIcon = new ImageIcon(getClass().getResource("/com/hospital/main/hospital.png"));
         Image scaledHospitalIcon = hospitalIcon.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
         hospitalIcon = new ImageIcon(scaledHospitalIcon);
@@ -73,10 +71,9 @@ public class MainDashboard extends JFrame {
         topPanel.add(userPanel, BorderLayout.EAST);
         add(topPanel, BorderLayout.NORTH);
 
-        
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-        sidebar.setBackground(new Color(44, 62, 80)); 
+        sidebar.setBackground(new Color(44, 62, 80));
         sidebar.setPreferredSize(new Dimension(220, 0));
         sidebar.setBorder(BorderFactory.createEmptyBorder(30, 0, 30, 0));
 
@@ -86,44 +83,46 @@ public class MainDashboard extends JFrame {
         menuLabel.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 0));
         sidebar.add(menuLabel);
 
-        
         ImageIcon dashboardIcon = scaleIcon("/com/hospital/main/dashboard.png", 30, 30);
         ImageIcon patientIcon = scaleIcon("/com/hospital/main/patient.png", 30, 30);
         ImageIcon appointmentIcon = scaleIcon("/com/hospital/main/appointment.png", 30, 30);
         ImageIcon billingIcon = scaleIcon("/com/hospital/main/bill.png", 30, 30);
         ImageIcon reportIcon = scaleIcon("/com/hospital/main/report.png", 30, 30);
+        ImageIcon ambulImageIcon = scaleIcon("/com/hospital/main/ambulance.png", 30, 30);
+        ImageIcon roomImageIcon = scaleIcon("/com/hospital/main/room.png", 30, 30);
+        ImageIcon medicalhistIcon = scaleIcon("/com/hospital/main/MedicalHistory.png", 30, 30);
 
-        
         addSidebarButton(sidebar, dashboardIcon, "Dashboard", "home");
         addSidebarButton(sidebar, patientIcon, "Patients", "patients");
         addSidebarButton(sidebar, appointmentIcon, "Appointments", "appointments");
         addSidebarButton(sidebar, billingIcon, "Billing", "billing");
         addSidebarButton(sidebar, reportIcon, "Reports", "reports");
+        addSidebarButton(sidebar, ambulImageIcon, "Ambulance", "ambulance");
+        addSidebarButton(sidebar, roomImageIcon, "Room", "room");
 
+        addSidebarButton(sidebar, medicalhistIcon, "Medical History", "medicalhistory");
         sidebar.add(Box.createVerticalGlue());
         add(sidebar, BorderLayout.WEST);
 
-        
         cardLayout = new CardLayout();
         contentPanel = new JPanel(cardLayout);
-        contentPanel.setBackground(new Color(245, 247, 250)); 
-
+        contentPanel.setBackground(new Color(245, 247, 250));
+        contentPanel.add(new AmbulancePanel(), "ambulance");
         contentPanel.add(new DashboardHomePanel(), "home");
         contentPanel.add(new PatientManagementPanel(), "patients");
         contentPanel.add(new AppointmentPanel(), "appointments");
         contentPanel.add(new BillingPanel(), "billing");
         contentPanel.add(new ReportPanel(), "reports");
-
+        contentPanel.add(new RoomManagementPanel(), "room");
+        contentPanel.add(new MedicalHistoryPanel(), "medicalhistory");
         add(contentPanel, BorderLayout.CENTER);
 
-        
         createMenuBar();
 
-        
         cardLayout.show(contentPanel, "home");
+
     }
 
-    
     private void createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -179,7 +178,6 @@ public class MainDashboard extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    
     private void addSidebarButton(JPanel sidebar, ImageIcon icon, String text, String panelName) {
         JButton button = new JButton(text, icon);
         button.setMaximumSize(new Dimension(220, 45));
@@ -194,7 +192,6 @@ public class MainDashboard extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         button.setIconTextGap(10);
 
-        
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(new Color(52, 73, 94));
@@ -211,14 +208,12 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createRigidArea(new Dimension(0, 5)));
     }
 
-    
     private ImageIcon scaleIcon(String path, int width, int height) {
         ImageIcon icon = new ImageIcon(getClass().getResource(path));
         Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
     }
 
-    
     private void handleLogout() {
         int choice = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to logout?",
@@ -258,4 +253,3 @@ public class MainDashboard extends JFrame {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 }
-
