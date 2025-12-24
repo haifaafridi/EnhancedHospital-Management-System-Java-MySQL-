@@ -1,6 +1,4 @@
 
-
-
 package com.hospital.dao;
 
 import java.sql.*;
@@ -12,7 +10,6 @@ import com.hospital.util.DatabaseConnection;
 
 public class RoomDAO {
 
-    
     public List<Room> getAvailableRooms() {
         List<Room> rooms = new ArrayList<>();
         String sql = "SELECT * FROM Rooms WHERE availability_status = 'Available' " +
@@ -33,7 +30,6 @@ public class RoomDAO {
         return rooms;
     }
 
-    
     public List<Room> getAllRooms() {
         List<Room> rooms = new ArrayList<>();
         String sql = "SELECT * FROM Rooms ORDER BY room_number";
@@ -53,7 +49,6 @@ public class RoomDAO {
         return rooms;
     }
 
-    
     public Room getRoomById(int roomId) {
         String sql = "SELECT * FROM Rooms WHERE room_id = ?";
 
@@ -74,7 +69,6 @@ public class RoomDAO {
         return null;
     }
 
-    
     public List<Room> getRoomsByType(String roomType) {
         List<Room> rooms = new ArrayList<>();
         String sql = "SELECT * FROM Rooms WHERE room_type = ? ORDER BY room_number";
@@ -96,7 +90,6 @@ public class RoomDAO {
         return rooms;
     }
 
-    
     public boolean addRoom(Room room) {
         String sql = "INSERT INTO Rooms (room_number, room_type, floor, capacity, " +
                 "price_per_day, availability_status, amenities) " +
@@ -141,7 +134,6 @@ public class RoomDAO {
         return false;
     }
 
-    
     public boolean updateRoom(Room room) {
         String sql = "UPDATE Rooms SET room_number = ?, room_type = ?, floor = ?, " +
                 "capacity = ?, price_per_day = ?, availability_status = ?, " +
@@ -179,7 +171,6 @@ public class RoomDAO {
         return false;
     }
 
-    
     public boolean updateRoomStatus(int roomId, String status) {
         String sql = "UPDATE Rooms SET availability_status = ? WHERE room_id = ?";
 
@@ -198,7 +189,6 @@ public class RoomDAO {
         return false;
     }
 
-    
     public int getRoomCountByStatus(String status) {
         String sql = "SELECT COUNT(*) FROM Rooms WHERE availability_status = ?";
 
@@ -219,7 +209,6 @@ public class RoomDAO {
         return 0;
     }
 
-    
     public boolean deleteRoom(int roomId) {
         String sql = "DELETE FROM Rooms WHERE room_id = ? AND availability_status = 'Available'";
 
@@ -236,7 +225,6 @@ public class RoomDAO {
         return false;
     }
 
-    
     private Room extractRoomFromResultSet(ResultSet rs) throws SQLException {
         Room room = new Room();
         room.setRoomId(rs.getInt("room_id"));
@@ -253,4 +241,3 @@ public class RoomDAO {
         return room;
     }
 }
-

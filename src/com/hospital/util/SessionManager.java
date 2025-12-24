@@ -1,6 +1,3 @@
-
-
-
 package com.hospital.util;
 
 import com.hospital.model.User;
@@ -33,4 +30,3 @@ public class SessionManager {
         return ipAddress;
     }
 }
-

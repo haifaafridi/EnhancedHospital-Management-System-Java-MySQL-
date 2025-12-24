@@ -1,6 +1,3 @@
-
-
-
 package com.hospital.util;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -15,4 +12,3 @@ public class PasswordUtil {
         return BCrypt.checkpw(plainPassword, hashedPassword);
     }
 }
-

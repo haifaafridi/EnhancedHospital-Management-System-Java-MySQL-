@@ -1,6 +1,3 @@
-
-
-
 package com.hospital.dao;
 
 import java.sql.*;
@@ -12,7 +9,6 @@ import com.hospital.util.DatabaseConnection;
 
 public class AdmissionDAO {
 
-    
     public boolean admitPatient(Admission admission) {
         String sql = "{CALL sp_admit_patient(?, ?, ?, ?, ?, ?)}";
 
@@ -36,7 +32,6 @@ public class AdmissionDAO {
         return false;
     }
 
-    
     public List<Admission> getCurrentAdmissions() {
         List<Admission> admissions = new ArrayList<>();
         String sql = "SELECT * FROM Admissions WHERE status = 'Admitted' ORDER BY admission_date DESC";
@@ -56,7 +51,6 @@ public class AdmissionDAO {
         return admissions;
     }
 
-    
     public List<Admission> getAdmissionsByPatient(int patientId) {
         List<Admission> admissions = new ArrayList<>();
         String sql = "SELECT * FROM Admissions WHERE patient_id = ? ORDER BY admission_date DESC";
@@ -78,7 +72,6 @@ public class AdmissionDAO {
         return admissions;
     }
 
-    
     public Admission getAdmissionById(int admissionId) {
         String sql = "SELECT * FROM Admissions WHERE admission_id = ?";
 
@@ -99,7 +92,6 @@ public class AdmissionDAO {
         return null;
     }
 
-    
     public boolean dischargePatient(int admissionId, String dischargeSummary,
             String dischargeInstructions) {
         String sql = "{CALL sp_discharge_patient(?, ?, ?)}";
@@ -121,7 +113,6 @@ public class AdmissionDAO {
         return false;
     }
 
-    
     public boolean updateAdmission(Admission admission) {
         String sql = "UPDATE Admissions SET expected_discharge_date = ?, diagnosis = ?, " +
                 "discharge_summary = ?, discharge_instructions = ? WHERE admission_id = ?";
@@ -144,7 +135,6 @@ public class AdmissionDAO {
         return false;
     }
 
-    
     public int getTotalAdmissions() {
         String sql = "SELECT COUNT(*) FROM Admissions";
 
@@ -163,7 +153,6 @@ public class AdmissionDAO {
         return 0;
     }
 
-    
     public int getCurrentAdmissionCount() {
         String sql = "SELECT COUNT(*) FROM Admissions WHERE status = 'Admitted'";
 
@@ -182,7 +171,6 @@ public class AdmissionDAO {
         return 0;
     }
 
-    
     private Admission extractAdmissionFromResultSet(ResultSet rs) throws SQLException {
         Admission admission = new Admission();
         admission.setAdmissionId(rs.getInt("admission_id"));
@@ -203,4 +191,3 @@ public class AdmissionDAO {
         return admission;
     }
 }
-
